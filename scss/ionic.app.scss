@@ -15,6 +15,13 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$stable:						#c0392b !default;
+$light:							#ecf0f1 !default;
+
+.title, .tab-nav, *{
+	color: $light;
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 

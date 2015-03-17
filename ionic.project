@@ -1,4 +1,12 @@
 {
   "name": "diningapp",
-  "app_id": ""
+  "app_id": "0b417a3f",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

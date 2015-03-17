@@ -18,8 +18,8 @@ $dark:                            #444 !default;
 $stable:						#c0392b !default;
 $light:							#ecf0f1 !default;
 
-.title, .tab-nav, *{
-	color: $light;
+.bar.bar-stable .title, .tab-title{
+	color: $light !important;
 }
 
 // The path for our ionicons font files, relative to the built CSS in www/css

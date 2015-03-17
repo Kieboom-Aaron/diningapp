@@ -14,8 +14,8 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-.title, .tab-nav, * {
-  color: #ecf0f1; }
+.bar.bar-stable .title, .tab-title {
+  color: #ecf0f1 !important; }
 
 /*!
   Ionicons, v2.0.1

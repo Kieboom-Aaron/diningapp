@@ -3,7 +3,7 @@
         <ion-list>
             <ion-item collection-repeat="restaurant in restaurants">
             <a class="item item-avatar" href="#/app/restaurant/{{$index}}">
-			    <img src="{{restaurant.images.cropped}}">
+			    <img src="{{restaurant.images.cropped[0] || '/img/restaurant.jpg'}}">
 			    <h2>{{restaurant.name}}</h2>
 			    <p>De tering das een eind lopen ;)</p>
 		    </a>

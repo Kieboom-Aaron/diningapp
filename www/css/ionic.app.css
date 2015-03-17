@@ -14,7 +14,7 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-.bar.bar-stable .title, .tab-title {
+.bar.bar-stable .title, .icon, .tab-title {
   color: #ecf0f1 !important; }
 
 /*!

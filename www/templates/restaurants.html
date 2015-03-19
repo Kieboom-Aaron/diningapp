@@ -1,12 +1,12 @@
 <ion-view view-title="Restaurants">
     <ion-content>
         <ion-list>
-            <ion-item collection-repeat="restaurant in restaurants">
-	            <a class="item item-avatar" href="#/app/restaurant/{{$index}}">
-				    <img src="{{restaurant.images.cropped[0] || '/img/restaurant.jpg'}}">
-				    <h2>{{restaurant.name}}</h2>
-				    <p>De tering das een eind lopen ;)</p>
-			    </a>
+            <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurant/{{$index}}">
+			    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[0] || '/img/restaurant.jpg'}}">
+			    <h2>{{restaurant.name}}</h2>
+                <p>{{restaurant.category}}</p>
+                <p><a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a></p>
+			    <p>Afstand: {{(restaurant.distance/1000) | number: 1}} Km</p>
             </ion-item>
         </ion-list>
     </ion-content>

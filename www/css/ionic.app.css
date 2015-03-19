@@ -17,6 +17,13 @@ $dark:                            #444 !default;
 .bar.bar-stable .title, .icon, .tab-title {
   color: #ecf0f1 !important; }
 
+/*.item h2 {
+	padding-top: 10px;
+}
+
+.item p {
+	padding-top: 25px;
+}*/
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

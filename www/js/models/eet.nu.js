@@ -8,7 +8,6 @@ angular.module('diningapp').factory('eetNu', ['$http',
                 if (params.lat && params.lng) {
                     url += 'max_distance=2';
                     url += '&geolocation=' + params.lat + ',' + params.lng;
-                    console.log(url);
                 }
             }
             $http.get(url).then(function(res) {

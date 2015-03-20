@@ -41,27 +41,37 @@ angular.module('diningapp', ['ionic'])
     .state('app.restaurants', {
         url: '/restaurants',
         views: {
-            'tab-dash': {
+            'tab-dashboard': {
                 templateUrl: 'templates/restaurants.html',
                 controller: 'restaurantController'
             }
         }
     })
 
-    .state('tab.chats', {
-        url: '/chats',
+    .state('app.restaurantDetails', {
+        url: '/restaurants/:id',
         views: {
-            'tab-chats': {
+            'tab-dashboard': {
+                templateUrl: 'templates/restaurantDetails.html',
+                controller: 'restaurantDetailsController'
+            }
+        }
+    })
+
+    .state('tab.search', {
+        url: '/search',
+        views: {
+            'tab-search': {
                 templateUrl: 'templates/tab-chats.html',
                 controller: 'ChatsCtrl'
             }
         }
     })
 
-    .state('tab.account', {
-        url: '/account',
+    .state('tab.settings', {
+        url: '/settings',
         views: {
-            'tab-account': {
+            'tab-settings': {
                 templateUrl: 'templates/tab-account.html',
                 controller: 'AccountCtrl'
             }

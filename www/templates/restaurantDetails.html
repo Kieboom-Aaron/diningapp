@@ -1,0 +1,51 @@
+<ion-view view-title="{{restaurant.name}}{{id}}">
+    <ion-content>
+       <div class="list card">
+
+		  <div class="item item-avatar">
+		    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/restaurant.jpg'}}" />
+		    <h2>{{restaurant.name}}</h2>
+		    <p>
+			    <a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a>
+			    &nbsp;&nbsp; & &nbsp;&nbsp;
+			    <a href="{{restaurant.website_url}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">Website</a>
+			</p>
+		  </div>
+
+		  <div class="item item-image">
+		    <img src="{{restaurant.images.cropped[1] || restaurant.images.cropped[2] || '/img/restaurant.jpg'}}">
+		  </div>
+
+			<div class="item item-body">
+				<p class="assertive subtext">"{{restaurant.tagline}}"</p>
+			</div>
+
+			<div class="item padding">
+				<div class="row">
+					<div class="col-25"><p>Plaats: </p></div> 
+					<div class="col-75"><p>{{restaurant.address.city}}, {{restaurant.address.country}}</p></div>
+				</div>
+				<div class="row">
+					<div class="col-25"><p>Adres: </p></div>
+					<div class="col-75"><p>{{restaurant.address.street}}</p></div>
+				</div>
+				<div class="row">
+					<div class="col-25"><p>Postcode: </p></div>
+					<div class="col-75"><p>{{restaurant.address.zipcode}}</p></div>
+				</div>
+			</div>
+
+		<div class="item tabs tabs-secondary tabs-icon-left">
+		    <a class="tab-item" href="{{restaurant.facebook_url}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">
+		      <i class="icon ion-ios-social-facebook"></i>
+		      Facebook
+		    </a>
+		    <a class="tab-item" href="{{restaurant.twitter}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">
+		      <i class="icon ion-ios-social-twitter"></i>
+		      Twitter
+		    </a>
+		</div>
+
+		</div>
+    </ion-content>
+</ion-view>

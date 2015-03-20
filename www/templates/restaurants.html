@@ -1,8 +1,8 @@
 <ion-view view-title="Restaurants">
     <ion-content>
         <ion-list>
-            <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurant/{{$index}}">
-			    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[0] || '/img/restaurant.jpg'}}">
+            <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurants/{{$index}}">
+			    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/restaurant.jpg'}}">
 			    <h2>{{restaurant.name}}</h2>
                 <p>{{restaurant.category}}</p>
                 <p><a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a></p>

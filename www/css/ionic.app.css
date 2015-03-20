@@ -14,8 +14,16 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-.bar.bar-stable .title, .icon, .tab-title {
+.bar.bar-stable .title, .icon, .tab-title, .default-title, .previous-title {
   color: #ecf0f1 !important; }
+
+.subtext {
+  font-size: 2em !important;
+  color: #c0392b !important;
+  line-height: 120% !important; }
+
+.tab-item {
+  color: blue !important; }
 
 /*.item h2 {
 	padding-top: 10px;

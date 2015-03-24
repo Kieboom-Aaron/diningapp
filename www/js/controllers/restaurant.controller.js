@@ -1,5 +1,5 @@
-angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu', '$ionicLoading',
-    function($scope, eetNu, $ionicLoading) {
+angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu', '$ionicLoading', '$cordovaGeolocation',
+    function($scope, eetNu, $ionicLoading, $cordovaGeolocation) {
 
         //open loading dialog
         $ionicLoading.show({
@@ -16,7 +16,10 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
         
 
         $scope.doRefresh = function() {
-            navigator.geolocation.getCurrentPosition(function(data){
+             $cordovaGeolocation
+                .getCurrentPosition()
+                .then(function (data) {
+            //navigator.geolocation.getCurrentPosition(function(data){
                 eetNu.getRestaurants(function(data) {
                     $scope.restaurants = data;
                     $scope.$broadcast('scroll.refreshComplete');

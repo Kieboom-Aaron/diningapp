@@ -18,10 +18,8 @@ angular.module('diningapp').factory('eetNu', ['$http',
                 });
             }
             else if(window.localStorage['restaurants']){
-                console.log('local');
                 callback(res.data.results);
             }else{
-                console.log(url);
                 $http.get(url).then(function(res) {
                     if (res.status === 200) {
                         window.localStorage['restaurants'] = JSON.stringify(res.data.results);

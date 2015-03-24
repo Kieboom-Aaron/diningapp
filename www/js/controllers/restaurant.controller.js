@@ -5,27 +5,27 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
         $ionicLoading.show({
             template: 'Loading...'
         });
-        navigator.geolocation.getCurrentPosition(function(data){
-            console.log(data);
-            eetNu.getRestaurants(function(data) {
+        eetNu.getRestaurants(function(data) {
                 $scope.restaurants = data;
+                if(!$scope.$$phase){
+                    $scope.$apply();
+                }
                 $ionicLoading.hide();
-            }, 
-            {
-                lat : data.coords.latitude,
-                lng : data.coords.longitude
-            });
-        })
+            }
+        );
         
 
         $scope.doRefresh = function() {
-            eetNu.getRestaurants(function(data) {
-                $scope.restaurants = data;
-                $ionicLoading.hide();
-                $scope.apply();
-            }, {
-                lat: 51.52793,
-                lng: 5.081889
+            navigator.geolocation.getCurrentPosition(function(data){
+                eetNu.getRestaurants(function(data) {
+                    $scope.restaurants = data;
+                    $scope.$broadcast('scroll.refreshComplete');
+                    
+                }, 
+                {
+                    lat : data.coords.latitude,
+                    lng : data.coords.longitude
+                });
             });
         };
     }

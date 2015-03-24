@@ -5,23 +5,24 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
         $ionicLoading.show({
             template: 'Loading...'
         });
-        eetNu.getRestaurants(function(data) {
-            $scope.restaurants = data;
-            $ionicLoading.hide();
-        }, {
-            lat: 51.52793,
-            lng: 5.081889
-        });
+        requestRestaurants();
+        $ionicLoading.hide();
 
         $scope.doRefresh = function() {
+            setTimeout(function() {
+                requestRestaurants();
+                $scope.$broadcast('scroll.refreshComplete');
+                $scope.$apply();
+            }, 50);
+        };
+
+        function requestRestaurants() {
             eetNu.getRestaurants(function(data) {
                 $scope.restaurants = data;
-                $ionicLoading.hide();
-                $scope.apply();
             }, {
                 lat: 51.52793,
                 lng: 5.081889
             });
-        };
+        }
     }
 ]);

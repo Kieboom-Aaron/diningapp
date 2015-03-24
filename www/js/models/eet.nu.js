@@ -4,18 +4,29 @@ angular.module('diningapp').factory('eetNu', ['$http',
         function getVenues(callback, params) {
             var url = 'https://api.eet.nu/venues';
             if (params) {
+                console.log('params');
                 url += '?';
+                url += 'max_distance=2';
                 if (params.lat && params.lng) {
-                    url += 'max_distance=2';
                     url += '&geolocation=' + params.lat + ',' + params.lng;
                 }
+                $http.get(url).then(function(res) {
+                    if (res.status === 200) {
+                        window.localStorage['restaurants'] = JSON.stringify(res.data.results);
+                        callback(res.data.results);
+                    }
+                });
             }
-            $http.get(url).then(function(res) {
-                if (res.status === 200) {
-                    window.localStorage['restaurants'] = JSON.stringify(res.data.results);
-                    callback(res.data.results);
-                }
-            });
+            else if(window.localStorage['restaurants']){
+                callback(res.data.results);
+            }else{
+                $http.get(url).then(function(res) {
+                    if (res.status === 200) {
+                        window.localStorage['restaurants'] = JSON.stringify(res.data.results);
+                        callback(res.data.results);
+                    }
+                });
+            }
         }
 
         return {

@@ -12,5 +12,16 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
             lat: 51.52793,
             lng: 5.081889
         });
+
+        $scope.doRefresh = function() {
+            eetNu.getRestaurants(function(data) {
+                $scope.restaurants = data;
+                $ionicLoading.hide();
+                $scope.apply();
+            }, {
+                lat: 51.52793,
+                lng: 5.081889
+            });
+        };
     }
 ]);

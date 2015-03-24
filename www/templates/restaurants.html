@@ -1,5 +1,9 @@
 <ion-view view-title="Restaurants">
     <ion-content>
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
         <ion-list>
             <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurants/{{$index}}">
 			    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/restaurant.jpg'}}">

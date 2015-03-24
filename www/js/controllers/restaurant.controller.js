@@ -6,14 +6,13 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
             template: 'Loading...'
         });
         eetNu.getRestaurants(function(data) {
-                $scope.restaurants = data;
-                if(!$scope.$$phase){
-                    $scope.$apply();
-                }
-                $ionicLoading.hide();
+            $scope.restaurants = data;
+            if (!$scope.$$phase) {
+                $scope.$apply();
             }
-        );
-        
+            $ionicLoading.hide();
+        });
+
 
         $scope.doRefresh = function() {
              $cordovaGeolocation
@@ -23,11 +22,10 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
                 eetNu.getRestaurants(function(data) {
                     $scope.restaurants = data;
                     $scope.$broadcast('scroll.refreshComplete');
-                    
-                }, 
-                {
-                    lat : data.coords.latitude,
-                    lng : data.coords.longitude
+
+                }, {
+                    lat: data.coords.latitude,
+                    lng: data.coords.longitude
                 });
             });
         };

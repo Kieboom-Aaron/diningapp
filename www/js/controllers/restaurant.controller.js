@@ -13,7 +13,7 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
                 requestRestaurants();
                 $scope.$broadcast('scroll.refreshComplete');
                 $scope.$apply();
-            }, 50);
+            }, 600);
         };
 
         function requestRestaurants() {

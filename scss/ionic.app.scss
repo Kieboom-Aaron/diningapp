@@ -15,23 +15,36 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$stable:						#c0392b !default;
-$light:							#ecf0f1 !default;
-
-.bar.bar-stable .title, .icon, .tab-title, .default-title, .previous-title{
-	color: $light !important;
+$stable: #c0392b !default;
+$light: #ecf0f1 !default;
+.bar.bar-stable .title,
+.icon,
+.tab-title,
+.default-title,
+.previous-title {
+    color: $light !important;
 }
 
-.subtext{
-	font-size: 2em !important;
-	color: $stable !important;
-	line-height: 120% !important;
+.subtext {
+    font-size: 2em !important;
+    color: $stable !important;
+    line-height: 120% !important;
 }
 
-.tab-item{
-	color: blue !important;
+.tab-item {
+    color: blue !important;
 }
 
+.rating {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.rating img {
+    max-height: 25px;
+    z-index: 1;
+}
 /*.item h2 {
 	padding-top: 10px;
 }
@@ -42,7 +55,5 @@ $light:							#ecf0f1 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-

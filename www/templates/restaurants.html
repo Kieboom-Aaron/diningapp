@@ -1,26 +1,27 @@
 <ion-view view-title="Restaurants">
     <ion-content>
-        <ion-refresher
-            pulling-text="Pull to refresh..."
-            on-refresh="doRefresh()">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
         </ion-refresher>
         <ion-list>
             <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurants/{{$index}}">
-			    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/icon.jpg'}}">
-			    <h2>{{restaurant.name}}</h2>
+                <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/icon.jpg'}}">
+                <h2>{{restaurant.name}}</h2>
                 <p>{{restaurant.category}}</p>
                 <p><a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a></p>
-			    <p>Afstand: {{(restaurant.distance/1000) | number: 1}} Km
-                <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 0"/>
-                <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 20"/>
-                <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 40"/>
-                <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 60"/>
-                <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 80"/>
-                <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 0"/>
-                <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 20"/>
-                <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 40"/>
-                <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 60"/>
-                <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 80"/></p>
+                <p ng-show="restaurant.distance">Afstand: {{(restaurant.distance/1000) | number: 1}} Km
+                    <div class="rating">
+                        <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 0" />
+                        <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 20" />
+                        <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 40" />
+                        <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 60" />
+                        <img ng-src="/img/star.png" class="thumb" ng-show="restaurant.rating > 80" />
+                        <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 0" />
+                        <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 20" />
+                        <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 40" />
+                        <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 60" />
+                        <img ng-src="/img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 80" />
+                    </div>
+                </p>
             </ion-item>
         </ion-list>
     </ion-content>

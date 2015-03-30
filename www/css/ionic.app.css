@@ -25,6 +25,15 @@ $dark:                            #444 !default;
 .tab-item {
   color: blue !important; }
 
+.rating {
+  position: absolute;
+  top: 5px;
+  right: 5px; }
+
+.rating img {
+  max-height: 25px;
+  z-index: 1; }
+
 /*.item h2 {
 	padding-top: 10px;
 }

@@ -6,7 +6,7 @@
         </ion-refresher>
         <ion-list>
             <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurants/{{$index}}">
-			    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/icon.jpg'}}">
+			    <img ng-src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/icon.jpg'}}">
 			    <h2>{{restaurant.name}}</h2>
                 <p>{{restaurant.category}}</p>
                 <p><a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a></p>

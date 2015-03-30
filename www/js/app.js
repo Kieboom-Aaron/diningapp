@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('diningapp', ['ionic'])
+angular.module('diningapp', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -47,7 +47,6 @@ angular.module('diningapp', ['ionic'])
             }
         }
     })
-
     .state('app.restaurantDetails', {
         url: '/restaurants/:id',
         views: {
@@ -57,13 +56,21 @@ angular.module('diningapp', ['ionic'])
             }
         }
     })
-
-    .state('tab.search', {
+    .state('app.restaurantSearch', {
+        url: '/restaurants/:lat/:lng',
+        views: {
+            'tab-dashboard': {
+                templateUrl: 'templates/restaurants.html',
+                controller: 'restaurantController'
+            }
+        }
+    })
+    .state('app.search', {
         url: '/search',
         views: {
             'tab-search': {
-                templateUrl: 'templates/tab-chats.html',
-                controller: 'ChatsCtrl'
+                templateUrl: 'templates/search.html',
+                controller: 'searchController'
             }
         }
     })

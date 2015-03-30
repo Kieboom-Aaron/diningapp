@@ -16,10 +16,9 @@ angular.module('diningapp').factory('eetNu', ['$http',
                         callback(res.data.results);
                     }
                 });
-            }
-            else if(window.localStorage['restaurants']){
+            } else if (window.localStorage['restaurants'] && window.localStorage['restaurants'].length > 0) {
                 callback(res.data.results);
-            }else{
+            } else {
                 $http.get(url).then(function(res) {
                     if (res.status === 200) {
                         window.localStorage['restaurants'] = JSON.stringify(res.data.results);

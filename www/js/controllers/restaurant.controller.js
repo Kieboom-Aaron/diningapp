@@ -44,14 +44,11 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
                         eetNu.getRestaurants(function(data) {
                             $scope.restaurants = data;
                             $scope.$broadcast('scroll.refreshComplete');
-
                         }, {
                             lat: data.coords.latitude,
                             lng: data.coords.longitude
                         });
-                    }
-            // navigator.geolocation.getCurrentPosition(function(data){
-                
+                    }                
             });
         };
     }

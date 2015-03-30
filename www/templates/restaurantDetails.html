@@ -35,7 +35,7 @@
 				</div>
 			</div>
 
-		<div class="item tabs tabs-secondary tabs-icon-left" ng-show="restaurant.facebook_url && restaurant.twitter">
+		<div class="item tabs tabs-secondary tabs-icon-left" ng-show="restaurant.facebook_url || restaurant.twitter">
 		    <a class="tab-item" ng-show="restaurant.facebook_url" href="{{restaurant.facebook_url}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">
 		      <i class="icon ion-social-facebook"></i>
 		      Facebook

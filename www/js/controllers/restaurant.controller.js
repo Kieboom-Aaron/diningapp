@@ -4,10 +4,10 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
         $ionicLoading.show({
             template: '<ion-spinner></ion-spinner>'
         });
-        if($stateParams.lat && $stateParams.lng){
+        if ($stateParams.lat && $stateParams.lng) {
             eetNu.getRestaurants(function(data) {
                 $scope.restaurants = data;
-                if(!$scope.$$phase){
+                if (!$scope.$$phase) {
                     $scope.$apply();
                 }
                 $ionicLoading.hide();
@@ -15,7 +15,7 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
                 lat: $stateParams.lat,
                 lng: $stateParams.lng
             });
-        }else{
+        } else {
             eetNu.getRestaurants(function(data) {
                 $scope.restaurants = data;
                 if (!$scope.$$phase) {
@@ -25,31 +25,29 @@ angular.module('diningapp').controller('restaurantController', ['$scope', 'eetNu
             });
         }
 
-        
+
 
 
         $scope.doRefresh = function() {
             $cordovaGeolocation
                 .getCurrentPosition({
-                    timeout:15000,
-                    enableHighAccuracy:true
+                    timeout: 15000,
+                    enableHighAccuracy: true
                 })
-                .then(function (data) {
-                    if(!data.coords){
-                        eetNu.getRestaurants(function(data) {
-                            $scope.restaurants = data;
-                            $scope.$broadcast('scroll.refreshComplete');
-                        });
-                    }else{
-                        eetNu.getRestaurants(function(data) {
-                            $scope.restaurants = data;
-                            $scope.$broadcast('scroll.refreshComplete');
-                        }, {
-                            lat: data.coords.latitude,
-                            lng: data.coords.longitude
-                        });
-                    }                
-            });
+                .then(function(data) {
+                    eetNu.getRestaurants(function(data) {
+                        $scope.restaurants = data;
+                        $scope.$broadcast('scroll.refreshComplete');
+                    }, {
+                        lat: data.coords.latitude,
+                        lng: data.coords.longitude
+                    });
+                }, function(error) {
+                    eetNu.getRestaurants(function(data) {
+                        $scope.restaurants = data;
+                        $scope.$broadcast('scroll.refreshComplete');
+                    });
+                });
         };
     }
 ]);

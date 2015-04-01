@@ -70,7 +70,7 @@
         <ion-side-menu side="left" class="hasheader" expose-aside-when="large">
             <ion-content ng-controller="restaurantController">
                 <ion-list>
-                    <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurants/{{$index}}" ng-click="updateDetails({{$index}})">
+                    <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" ng-click="updateDetails({{$index}})">
                         <img ng-src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || 'img/icon.jpg'}}">
                         <h2>{{restaurant.name}}</h2>
                         <p>{{restaurant.category}}</p>

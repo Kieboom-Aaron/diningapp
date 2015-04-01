@@ -1,7 +1,7 @@
 <ion-view view-title="{{restaurant.name}}{{id}}">
     <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+        <ion-nav-back-button>
+        </ion-nav-back-button>
     </ion-nav-bar>
     <ion-side-menus>
         <ion-side-menu-content>
@@ -16,12 +16,20 @@
                             <a href="{{restaurantdetails.website_url}}" ng-show="restaurantdetails.website_url" onclick="window.open(this.href, '_system', 'location=yes');return false;">Website</a>
                         </p>
                     </div>
-                    <div class="item item-image" ng-show="restaurantdetails.images.cropped[1] || restaurantdetails.images.cropped[2]">
-                        <img src="{{restaurantdetails.images.cropped[1] || restaurantdetails.images.cropped[2]}}">
-                    </div>
+
+                    <ion-slide-box does-continue="true" auto-play="true" slide-interval="2500" on-slide-changed="slideHasChanged($index)">
+
+                      <ion-slide ng-repeat="image in restaurantdetails.images.cropped">
+                          <div class="item item-image">
+                            <img src="{{ image }}" />
+                          </div>
+                      </ion-slide>
+                    </ion-slide-box>
+
                     <div class="item item-body" ng-show="restaurantdetails.tagline">
                         <p class="assertive subtext">"{{restaurantdetails.tagline}}"</p>
                     </div>
+
                     <div class="item padding">
                         <div class="row">
                             <div class="col-25">
@@ -69,16 +77,16 @@
                         <p><a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a></p>
                         <p ng-show="restaurant.distance">Afstand: {{(restaurant.distance/1000) | number: 1}} Km
                             <div class="rating">
-                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 0" />
-                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 20" />
-                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 40" />
-                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 60" />
-                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 80" />
-                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 0" />
-                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 20" />
-                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 40" />
-                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 60" />
-                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 80" />
+                                <img ng-src="img/sterretje.png" class="thumb" ng-show="restaurant.rating > 0" />
+                                <img ng-src="img/sterretje.png" class="thumb" ng-show="restaurant.rating > 20" />
+                                <img ng-src="img/sterretje.png" class="thumb" ng-show="restaurant.rating > 40" />
+                                <img ng-src="img/sterretje.png" class="thumb" ng-show="restaurant.rating > 60" />
+                                <img ng-src="img/sterretje.png" class="thumb" ng-show="restaurant.rating > 80" />
+                                <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="restaurant.rating <= 0" />
+                                <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="restaurant.rating <= 20" />
+                                <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="restaurant.rating <= 40" />
+                                <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="restaurant.rating <= 60" />
+                                <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="restaurant.rating <= 80" />
                             </div>
                         </p>
                     </ion-item>

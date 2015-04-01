@@ -1,51 +1,89 @@
 <ion-view view-title="{{restaurant.name}}{{id}}">
-    <ion-content>
-       <div class="list card">
-
-		  <div class="item item-avatar">
-		    <img src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || '/img/restaurant.jpg'}}" />
-		    <h2>{{restaurant.name}}</h2>
-		    <p>
-			    <a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a>
-			    <span ng-show="restaurant.website_url">&nbsp;&nbsp; & &nbsp;&nbsp;</span>
-			    <a href="{{restaurant.website_url}}" ng-show="restaurant.website_url" onclick="window.open(this.href, '_system', 'location=yes');return false;">Website</a>
-			</p>
-		  </div>
-
-		  <div class="item item-image" ng-show="restaurant.images.cropped[1] || restaurant.images.cropped[2]">
-		    <img src="{{restaurant.images.cropped[1] || restaurant.images.cropped[2]}}">
-		  </div>
-
-			<div class="item item-body" ng-show="restaurant.tagline">
-				<p class="assertive subtext">"{{restaurant.tagline}}"</p>
-			</div>
-
-			<div class="item padding">
-				<div class="row">
-					<div class="col-25"><p>Plaats: </p></div> 
-					<div class="col-75"><p>{{restaurant.address.city}}, {{restaurant.address.country}}</p></div>
-				</div>
-				<div class="row">
-					<div class="col-25"><p>Adres: </p></div>
-					<div class="col-75"><p>{{restaurant.address.street}}</p></div>
-				</div>
-				<div class="row">
-					<div class="col-25"><p>Postcode: </p></div>
-					<div class="col-75"><p>{{restaurant.address.zipcode}}</p></div>
-				</div>
-			</div>
-
-		<div class="item tabs tabs-secondary tabs-icon-left" ng-show="restaurant.facebook_url || restaurant.twitter">
-		    <a class="tab-item" ng-show="restaurant.facebook_url" href="{{restaurant.facebook_url}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">
-		      <i class="icon ion-social-facebook"></i>
-		      Facebook
-		    </a>
-		    <a class="tab-item" ng-show="restaurant.twitter" href="{{restaurant.twitter}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">
-		      <i class="icon ion-social-twitter"></i>
-		      Twitter
-		    </a>
-		</div>
-
-		</div>
-    </ion-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-side-menus>
+        <ion-side-menu-content>
+            <ion-content>
+                <div class="list card">
+                    <div class="item item-avatar">
+                        <img src="{{restaurantdetails.images.cropped[0] || restaurantdetails.images.cropped[1] || '/img/restaurant.jpg'}}" />
+                        <h2>{{restaurantdetails.name}}</h2>
+                        <p>
+                            <a href="tel:{{restaurantdetails.telephone || restaurantdetails.mobile}}">{{restaurantdetails.telephone || restaurantdetails.mobile}}</a>
+                            <span ng-show="restaurantdetails.website_url">&nbsp;&nbsp; & &nbsp;&nbsp;</span>
+                            <a href="{{restaurantdetails.website_url}}" ng-show="restaurantdetails.website_url" onclick="window.open(this.href, '_system', 'location=yes');return false;">Website</a>
+                        </p>
+                    </div>
+                    <div class="item item-image" ng-show="restaurantdetails.images.cropped[1] || restaurantdetails.images.cropped[2]">
+                        <img src="{{restaurantdetails.images.cropped[1] || restaurantdetails.images.cropped[2]}}">
+                    </div>
+                    <div class="item item-body" ng-show="restaurantdetails.tagline">
+                        <p class="assertive subtext">"{{restaurantdetails.tagline}}"</p>
+                    </div>
+                    <div class="item padding">
+                        <div class="row">
+                            <div class="col-25">
+                                <p>Plaats: </p>
+                            </div>
+                            <div class="col-75">
+                                <p>{{restaurantdetails.address.city}}, {{restaurantdetails.address.country}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <p>Adres: </p>
+                            </div>
+                            <div class="col-75">
+                                <p>{{restaurantdetails.address.street}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <p>Postcode: </p>
+                            </div>
+                            <div class="col-75">
+                                <p>{{restaurantdetails.address.zipcode}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item tabs tabs-secondary tabs-icon-left" ng-show="restaurantdetails.facebook_url || restaurantdetails.twitter">
+                        <a class="tab-item" ng-show="restaurantdetails.facebook_url" href="{{restaurantdetails.facebook_url}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">
+                            <i class="icon ion-social-facebook"></i> Facebook
+                        </a>
+                        <a class="tab-item" ng-show="restaurantdetails.twitter" href="{{restaurantdetails.twitter}}" onclick="window.open(this.href, '_system', 'location=yes');return false;">
+                            <i class="icon ion-social-twitter"></i> Twitter
+                        </a>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-side-menu-content>
+        <ion-side-menu side="left" class="hasheader" expose-aside-when="large">
+            <ion-content ng-controller="restaurantController">
+                <ion-list>
+                    <ion-item class="item-thumbnail-left" ng-repeat="restaurant in restaurants" href="#/app/restaurants/{{$index}}" ng-click="updateDetails({{$index}})">
+                        <img ng-src="{{restaurant.images.cropped[0] || restaurant.images.cropped[1] || 'img/icon.jpg'}}">
+                        <h2>{{restaurant.name}}</h2>
+                        <p>{{restaurant.category}}</p>
+                        <p><a href="tel:{{restaurant.telephone || restaurant.mobile}}">{{restaurant.telephone || restaurant.mobile}}</a></p>
+                        <p ng-show="restaurant.distance">Afstand: {{(restaurant.distance/1000) | number: 1}} Km
+                            <div class="rating">
+                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 0" />
+                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 20" />
+                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 40" />
+                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 60" />
+                                <img ng-src="img/star.png" class="thumb" ng-show="restaurant.rating > 80" />
+                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 0" />
+                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 20" />
+                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 40" />
+                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 60" />
+                                <img ng-src="img/negativestar.png" class="thumb" ng-show="restaurant.rating <= 80" />
+                            </div>
+                        </p>
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-side-menu>
+    </ion-side-menus>
 </ion-view>

@@ -37,13 +37,14 @@ $light: #ecf0f1 !default;
 
 .rating {
     position: absolute;
-    top: 5px;
+    top: 28px;
     right: 5px;
 }
 
 .rating img {
-    max-height: 25px;
+    max-height: 20px;
     z-index: 1;
+    margin-left: -4px;
 }
 /*.item h2 {
 	padding-top: 10px;

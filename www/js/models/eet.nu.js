@@ -16,10 +16,9 @@ angular.module('diningapp').factory('eetNu', ['$http',
                             callback(res.data.results);
                         }
                     });
-                }
-                else if(window.localStorage['restaurants']){
+                } else if (window.localStorage['restaurants']) {
                     callback(JSON.parse(window.localStorage['restaurants']));
-                }else{
+                } else {
                     $http.get(url).then(function(res) {
                         if (res.status === 200) {
                             window.localStorage['restaurants'] = JSON.stringify(res.data.results);
@@ -34,18 +33,33 @@ angular.module('diningapp').factory('eetNu', ['$http',
                 index = index || 0;
                 return window.localStorage['restaurants'][index] || {};
             },
-            getLocations: function(callback){
-                callback = callback || function(){};
-                if(window.localStorage['locations']){
+            setRestaurantAsFavorite: function(index) {
+                index = index || 0;
+                restaurant = window.localStorage['restaurants'][index];
+                restaurant.favorite = true;
+                window.localStorage['favorites'] = +JSON.stringify(restaurant);
+                window.localStorage['locations'][index] = JSON.stringify(restaurant);
+                return true;
+            },
+            getLocations: function(callback) {
+                callback = callback || function() {};
+                if (window.localStorage['locations']) {
                     callback(JSON.parse(window.localStorage['locations']));
-                }else{
-                    $http.get('https://api.eet.nu/locations?type=City').then(function(res){
-                        if(res.status === 200){
+                } else {
+                    $http.get('https://api.eet.nu/locations?type=City').then(function(res) {
+                        if (res.status === 200) {
                             var json = res.data.results
                             window.localStorage['locations'] = JSON.stringify(json);
                             callback(json);
                         }
                     });
+                }
+            },
+            getfavorites: function(callback) {
+                if (!window.localStorage['favorites']) {
+                    return callback(null);
+                } else {
+                    return callback(window.localStorage['favorites']);
                 }
             }
         }

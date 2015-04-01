@@ -16,7 +16,7 @@ angular.module('diningapp', ['ionic', 'ngCordova'])
         }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
-            StatusBar.styleDefault();
+            StatusBar.LightContent();
         }
     });
 })
@@ -47,43 +47,53 @@ angular.module('diningapp', ['ionic', 'ngCordova'])
             }
         }
     })
-    .state('app.restaurantDetails', {
-        url: '/restaurants/:id',
-        views: {
-            'tab-dashboard': {
-                templateUrl: 'templates/restaurantDetails.html',
-                controller: 'restaurantDetailsController'
+        .state('app.restaurantDetails', {
+            url: '/restaurants/:id',
+            views: {
+                'tab-dashboard': {
+                    templateUrl: 'templates/restaurantDetails.html',
+                    controller: 'restaurantDetailsController'
+                }
             }
-        }
-    })
-    .state('app.restaurantSearch', {
-        url: '/restaurants/:lat/:lng',
-        views: {
-            'tab-dashboard': {
-                templateUrl: 'templates/restaurants.html',
-                controller: 'restaurantController'
+        })
+        .state('app.restaurantSearch', {
+            url: '/restaurants/:lat/:lng',
+            views: {
+                'tab-dashboard': {
+                    templateUrl: 'templates/restaurants.html',
+                    controller: 'restaurantController'
+                }
             }
-        }
-    })
-    .state('app.search', {
-        url: '/search',
+        })
+        .state('app.search', {
+            url: '/search',
+            views: {
+                'tab-search': {
+                    templateUrl: 'templates/search.html',
+                    controller: 'searchController'
+                }
+            }
+        })
+
+    .state('app.favorieten', {
+        url: '/favorieten',
         views: {
-            'tab-search': {
-                templateUrl: 'templates/search.html',
-                controller: 'searchController'
+            'tab-favorites': {
+                templateUrl: 'templates/favorites.html',
+                controller: 'favorietenController'
             }
         }
     })
 
-    .state('tab.settings', {
-        url: '/settings',
+    .state('app.favoritesDetails', {
+        url: '/favorieten/:id',
         views: {
-            'tab-settings': {
-                templateUrl: 'templates/tab-account.html',
-                controller: 'AccountCtrl'
+            'tab-favorites': {
+                templateUrl: 'templates/restaurantDetails.html',
+                controller: 'favorietenDetailsController'
             }
         }
-    });
+    })
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/restaurants');

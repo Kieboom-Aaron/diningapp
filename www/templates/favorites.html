@@ -1,0 +1,29 @@
+<ion-view view-title="Favorieten">
+    <ion-content>
+        <button class="button button-full button-positive" ng-show="!favorites">
+            U heeft nog geen favorieten toegevoegd!
+        </button>
+        <ion-list ng-show="favorites">
+            <ion-item class="item-thumbnail-left" ng-repeat="favorite in favorites" href="#/app/favorieten/{{$index}}">
+			    <img ng-src="{{favorite.images.cropped[0] || favorite.images.cropped[1] || 'img/icon.jpg'}}">
+			    <h2>{{favorite.name}}</h2>
+                <p>{{favorite.category}}</p>
+                <p><a href="tel:{{favorite.telephone || favorite.mobile}}">{{favorite.telephone || favorite.mobile}}</a></p>
+                <p ng-show="favorite.distance">Afstand: {{(favorite.distance/1000) | number: 1}} Km
+                    <div class="rating">
+                        <img ng-src="img/sterretje.png" class="thumb" ng-show="favorite.rating > 0" />
+                        <img ng-src="img/sterretje.png" class="thumb" ng-show="favorite.rating > 20" />
+                        <img ng-src="img/sterretje.png" class="thumb" ng-show="favorite.rating > 40" />
+                        <img ng-src="img/sterretje.png" class="thumb" ng-show="favorite.rating > 60" />
+                        <img ng-src="img/sterretje.png" class="thumb" ng-show="favorite.rating > 80" />
+                        <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="favorite.rating <= 0" />
+                        <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="favorite.rating <= 20" />
+                        <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="favorite.rating <= 40" />
+                        <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="favorite.rating <= 60" />
+                        <img ng-src="img/sterretjeNegative.png" class="thumb" ng-show="favorite.rating <= 80" />
+                    </div>
+                </p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

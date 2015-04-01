@@ -1,7 +1,10 @@
-<ion-view view-title="{{restaurant.name}}{{id}}">
+<ion-view view-title="{{restaurantdetails.name}}">
     <ion-nav-bar class="bar-stable">
         <ion-nav-back-button>
         </ion-nav-back-button>
+        <ion-nav-buttons side="right">
+           <!--<a class="button button-icon icon" ng-class="{'ion-star starButton': favorite, 'ion-star starButtonLight': !favorite}" ng-click="restaurantdetails.favorite=!restaurantdetails.favorite; updateFavorites({{restaurantdetails.index}})" data="{{restaurantdetails.index}}"></a>
+        </ion-nav-buttons>-->
     </ion-nav-bar>
     <ion-side-menus>
         <ion-side-menu-content>
